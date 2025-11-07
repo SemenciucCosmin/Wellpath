@@ -1,0 +1,99 @@
+<resources>
+    <!--  GENERAL  -->
+    <string name="lbl_app_name">Wellpath</string>
+    <string name="lbl_empty" />
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_no">No</string>
+    <string name="lbl_accessibility_back">Back</string>
+    <string name="lbl_next">Next</string>
+    <string name="lbl_send">Send</string>
+    <string name="lbl_finish">Finish</string>
+    <string name="lbl_loading">Loading</string>
+    <string name="lbl_view_all">View All</string>
+
+    <!--  FAILURE  -->
+    <string name="lbl_failure_label">Server connection error</string>
+    <string name="lbl_failure_message">Something went wrong. Please try again.</string>
+    <string name="lbl_failure_accessibility">Failure</string>
+    <string name="lbl_retry">Retry</string>
+    <string name="lbl_no_results">No results for %s</string>
+
+    <!--  AUTH  -->
+    <string name="lbl_sign_in">Sign in</string>
+    <string name="lbl_sign_up">Sign up</string>
+
+    <string name="lbl_sign_in_message">Complete de fields below in order to sign in.</string>
+    <string name="lbl_sign_up_message">Complete de fields below in order to sign up.</string>
+
+    <string name="lbl_sign_in_google">Sign in with Google</string>
+    <string name="lbl_sign_up_google">Sign up with Google</string>
+
+    <string name="lbl_email">Email</string>
+    <string name="lbl_password">Password</string>
+    <string name="lbl_repeat_password">Repeat password</string>
+
+    <string name="lbl_empty_email">Email cannot be empty</string>
+    <string name="lbl_invalid_email">Invalid email</string>
+    <string name="lbl_email_collision">Email already exists!</string>
+
+    <string name="lbl_empty_password">Password cannot be empty</string>
+    <string name="lbl_invalid_password">Invalid password</string>
+    <string name="lbl_passwords_not_matching">Passwords not matching</string>
+    <string name="lbl_weak_password">Weak password</string>
+
+    <string name="lbl_sign_in_redirect_message">Already have an account?</string>
+    <string name="lbl_sign_up_redirect_message">Don\'t have an account?</string>
+
+    <string name="lbl_accessibility_password_visible">Hide password</string>
+    <string name="lbl_accessibility_password_hidden">Show password</string>
+
+    <!--  ONBOARDING  -->
+    <string name="lbl_onboarding_title">Let\'s Discover Your Travel Personality!</string>
+    <string name="lbl_onboarding_message">Unlock your perfect travel destinations by exploring your unique personality traits. Answer the following questions honestly, and we\'ll match you with unforgettable experiences.</string>
+    <string name="lbl_onboarding_redirect_message">Already have your Big Five scores?</string>
+    <string name="lbl_onboarding_redirect_action">Write them here!</string>
+    <string name="lbl_onboarding_lets_go">Let\'s go</string>
+    <string name="lbl_onboarding_manual_input_title">Fill in the score values from your personality test</string>
+
+    <!--  BFI DIMENSIONS  -->
+    <string name="lbl_openness">Openness</string>
+    <string name="lbl_conscientiousness">Conscientiousness</string>
+    <string name="lbl_extraversion">Extraversion</string>
+    <string name="lbl_agreeableness">Agreeableness</string>
+    <string name="lbl_neuroticism">Neuroticism</string>
+
+    <!--  FORM  -->
+    <string name="lbl_form_questions_message">Choose how accurately each statement reflects you:</string>
+    <string name="lbl_page_counter">Page %d/%d</string>
+
+    <!--  FORM QUESTION RESPONSE OPTION  -->
+    <string name="lbl_strongly_disagree">strongly disagree</string>
+    <string name="lbl_disagree">disagree</string>
+    <string name="lbl_neutral">neutral</string>
+    <string name="lbl_agree">agree</string>
+    <string name="lbl_strongly_agree">strongly agree</string>
+
+    <!--  FEED  -->
+    <string name="lbl_feed_title">Discover</string>
+    <string name="lbl_recommendation_title">Based on your personality, discover:</string>
+    <string name="lbl_popular_title">Popular this month</string>
+    <string name="lbl_favourites_activities_title">Favourite Activities</string>
+    <string name="lbl_favourites_locations_title">Favourite Locations</string>
+    <string name="lbl_locations">Locations</string>
+    <string name="lbl_activities">Activities</string>
+    <string name="lbl_recommended_activities_message">See recommended activities based on your personality.</string>
+    <string name="lbl_recommended_locations_message">See recommended locations based on your personality.</string>
+    <string name="lbl_favourite_activities_message">See favourite activities.</string>
+    <string name="lbl_favourite_locations_message">See favourite locations.</string>
+    <string name="lbl_recommendations_error">Something went wrong with computing your recommendations. Please retry.</string>
+    <string name="lbl_recommendations_loading">This may take some time to process.\nPlease, be patient.</string>
+
+    <!--  DETAILS  -->
+    <string name="lbl_description_title">Description</string>
+    <string name="lbl_activities_for_you_title">Activities for you</string>
+
+    <!--  SETTINGS  -->
+    <string name="lbl_settings">Settings</string>
+    <string name="lbl_sign_out">Sign out</string>
+    <string name="lbl_reset_score">Reset BFI score</string>
+</resources>

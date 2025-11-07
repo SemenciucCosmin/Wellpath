@@ -1,0 +1,14 @@
+package com.wellpath.er.ui.dimension
+
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+
+/**
+ * Object as wrapper over all radius sizes
+ */
+object Radius {
+    val Large: Dp = 24.dp
+    val Medium: Dp = 16.dp
+    val Small: Dp = 8.dp
+    val XSmall: Dp = 4.dp
+}

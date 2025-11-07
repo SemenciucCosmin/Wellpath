@@ -10,7 +10,7 @@ androidx-appcompat = "1.7.1"
 androidx-core = "1.17.0"
 androidx-lifecycle = "2.9.5"
 androidx-material = "1.13.0"
-androidx-splashscreen = "1.0.1"
+androidx-splashscreen = "1.2.0"
 
 # COIL
 coil = "3.3.0"

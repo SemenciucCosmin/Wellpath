@@ -1,4 +1,4 @@
-package com.wellpath.er
+package com.wellpath.er.app
 
 import platform.UIKit.UIDevice
 

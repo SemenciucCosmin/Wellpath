@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.jetbrainsKotlinSerialization)
+    alias(libs.plugins.googleServices)
 }
 
 kotlin {
@@ -33,16 +35,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.core.splashscreen)
 
-            // COIL
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor)
-
-            // FIREBASE
-            implementation(libs.firebase.app.kmp)
-            implementation(libs.firebase.analytics.kmp)
-            implementation(libs.firebase.auth.kmp)
-            implementation(libs.firebase.firestore.kmp)
-
             // KOTLINX
             implementation(libs.kotlinx.coroutines.play.services)
 
@@ -62,11 +54,24 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.ui)
 
+            // COIL
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
+
+            // FIREBASE
+            implementation(libs.firebase.app.kmp)
+            implementation(libs.firebase.analytics.kmp)
+            implementation(libs.firebase.auth.kmp)
+            implementation(libs.firebase.firestore.kmp)
+
             // KOIN
             implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
 
             // KOTLINX
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.immutableCollections)
 
             // KTOR
             implementation(libs.ktor.client.content.negotiation)

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14464023107",
+    "project_id": "wellpath-20cb8",
+    "storage_bucket": "wellpath-20cb8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14464023107:android:162a230f422deb7bcaf2f6",
+        "android_client_info": {
+          "package_name": "com.wellpath.er"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJs1PE1myxTHFfn3jleZFZbsEoWyVOFiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
