@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.detekt)
     alias(libs.plugins.jetbrainsKotlinSerialization)
     alias(libs.plugins.googleServices)
 }
@@ -72,6 +73,7 @@ kotlin {
             // KOTLINX
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.immutableCollections)
+            implementation(libs.kotlinx.date.time)
 
             // KTOR
             implementation(libs.ktor.client.content.negotiation)
@@ -127,6 +129,7 @@ android {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
     debugImplementation(compose.uiTooling)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -146,4 +149,19 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+detekt {
+    source.setFrom(
+        // APP
+        "${project.rootDir}/composeApp/src/androidMain/kotlin",
+        "${project.rootDir}/composeApp/src/commonMain/kotlin",
+        "${project.rootDir}/composeApp/src/iosMain/kotlin",
+    )
+
+    buildUponDefaultConfig = true
+    parallel = true
+    autoCorrect = true
+    config.setFrom("detekt-config.yml")
+    baseline = file("detekt-baseline.xml")
 }

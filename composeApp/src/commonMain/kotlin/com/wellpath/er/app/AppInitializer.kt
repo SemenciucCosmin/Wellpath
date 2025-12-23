@@ -13,6 +13,5 @@ object AppInitializer : KoinComponent {
     private val coroutineScope: CoroutineScope by inject()
 
     fun initApp() {
-
     }
 }

@@ -1,9 +1,9 @@
 package com.wellpath.er.feature.auth.viewmodel.model
 
-import com.wellpath.er.feature.auth.model.AuthScreenType
-import com.wellpath.er.feature.auth.model.PasswordError
 import com.wellpath.er.domain.extensions.BLANK
+import com.wellpath.er.feature.auth.model.AuthScreenType
 import com.wellpath.er.feature.auth.model.EmailError
+import com.wellpath.er.feature.auth.model.PasswordError
 import com.wellpath.er.ui.viewmodel.model.Event
 
 /**

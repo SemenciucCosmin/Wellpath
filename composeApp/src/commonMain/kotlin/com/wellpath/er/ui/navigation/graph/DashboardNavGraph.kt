@@ -3,14 +3,10 @@ package com.wellpath.er.ui.navigation.graph
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.navigation
-import com.wellpath.er.feature.auth.route.AuthRoute
 import com.wellpath.er.feature.dashboard.route.DashboardRoute
-import com.wellpath.er.feature.startup.route.StartupRoute
 import com.wellpath.er.ui.navigation.model.DashboardNavDestination
-import com.wellpath.er.ui.navigation.model.StartupNavDestination
 
-fun NavGraphBuilder.DashboardNavGraph(navController: NavController) {
+fun NavGraphBuilder.dashboardNavGraph(navController: NavController) {
     composable<DashboardNavDestination.Dashboard> {
         DashboardRoute(navController)
     }

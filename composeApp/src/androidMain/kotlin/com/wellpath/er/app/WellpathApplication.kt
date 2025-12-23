@@ -1,19 +1,12 @@
 package com.wellpath.er.app
 
 import android.app.Application
-import com.google.firebase.FirebaseApp
 import com.wellpath.er.di.KoinInitializer
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.FirebaseOptions
-import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.initialize
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import kotlin.getValue
 
 /**

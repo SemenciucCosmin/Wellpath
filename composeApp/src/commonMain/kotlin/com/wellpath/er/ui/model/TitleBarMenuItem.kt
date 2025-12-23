@@ -2,7 +2,6 @@ package com.wellpath.er.ui.model
 
 import org.jetbrains.compose.resources.DrawableResource
 
-
 /**
  * Data class for a menu item on the custom [TitleBar]
  * @param [action]: lambda function for menu item onClick action

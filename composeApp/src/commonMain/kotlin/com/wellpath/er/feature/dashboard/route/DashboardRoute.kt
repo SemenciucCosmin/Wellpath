@@ -17,6 +17,5 @@ fun DashboardRoute(navController: NavController) {
     Scaffold(
         bottomBar = { BottomBar(navController) }
     ) { paddingValues ->
-
     }
 }

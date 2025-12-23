@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.wellpath.er.feature.dashboard.viewmodel.DashboardViewModel
 import com.wellpath.er.feature.journal.viewmodel.JournalViewModel
 import com.wellpath.er.ui.navigation.components.BottomBar
 import org.koin.compose.viewmodel.koinViewModel
@@ -18,6 +17,5 @@ fun JournalRoute(navController: NavController) {
     Scaffold(
         bottomBar = { BottomBar(navController) }
     ) { paddingValues ->
-
     }
 }

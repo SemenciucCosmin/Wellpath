@@ -1,11 +1,11 @@
 package com.wellpath.er.ui.theme
 
-import com.ubb.fmi.orar.ui.theme.dimension.DefaultIcon
-import com.ubb.fmi.orar.ui.theme.dimension.DefaultSpacing
-import com.ubb.fmi.orar.ui.theme.dimension.DefaultStroke
-import com.ubb.fmi.orar.ui.theme.dimension.Icon
-import com.ubb.fmi.orar.ui.theme.dimension.Spacing
-import com.ubb.fmi.orar.ui.theme.dimension.Stroke
+import com.wellpath.er.ui.theme.dimension.DefaultIcon
+import com.wellpath.er.ui.theme.dimension.DefaultSpacing
+import com.wellpath.er.ui.theme.dimension.DefaultStroke
+import com.wellpath.er.ui.theme.dimension.Icon
+import com.wellpath.er.ui.theme.dimension.Spacing
+import com.wellpath.er.ui.theme.dimension.Stroke
 
 /**
  * Provides access to the default dimensions used in the application.

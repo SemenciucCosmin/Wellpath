@@ -2,14 +2,14 @@ package com.wellpath.er.feature.auth.viewmodel
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.viewModelScope
-import com.wellpath.er.feature.auth.model.AuthScreenType
-import com.wellpath.er.feature.auth.model.PasswordError
-import com.wellpath.er.feature.auth.viewmodel.model.AuthUiState
 import com.wellpath.er.data.auth.repository.AuthRepository
 import com.wellpath.er.domain.extensions.BLANK
 import com.wellpath.er.domain.extensions.isValidEmail
 import com.wellpath.er.domain.extensions.isValidPassword
+import com.wellpath.er.feature.auth.model.AuthScreenType
 import com.wellpath.er.feature.auth.model.EmailError
+import com.wellpath.er.feature.auth.model.PasswordError
+import com.wellpath.er.feature.auth.viewmodel.model.AuthUiState
 import com.wellpath.er.ui.viewmodel.EventViewModel
 import dev.gitlive.firebase.auth.FirebaseAuthException
 import dev.gitlive.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 /**
  * View model for auth flow
  */
+@Suppress("TooManyFunctions")
 class AuthViewModel(
     private val authRepository: AuthRepository,
 ) : EventViewModel<AuthUiState.AuthEvent>() {

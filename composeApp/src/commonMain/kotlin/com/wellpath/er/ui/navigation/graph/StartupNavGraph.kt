@@ -7,7 +7,7 @@ import com.wellpath.er.feature.auth.route.AuthRoute
 import com.wellpath.er.feature.startup.route.StartupRoute
 import com.wellpath.er.ui.navigation.model.StartupNavDestination
 
-fun NavGraphBuilder.StartupNavGraph(navController: NavController) {
+fun NavGraphBuilder.startupNavGraph(navController: NavController) {
     composable<StartupNavDestination.Startup> {
         StartupRoute(navController)
     }

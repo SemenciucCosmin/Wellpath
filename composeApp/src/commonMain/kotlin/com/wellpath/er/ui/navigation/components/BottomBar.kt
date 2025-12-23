@@ -12,8 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.wellpath.er.feature.dashboard.route.DashboardRoute
-import com.wellpath.er.ui.navigation.model.StartupNavDestination
 import com.wellpath.er.ui.navigation.model.BottomBarItem
 import com.wellpath.er.ui.navigation.model.DashboardNavDestination
 import com.wellpath.er.ui.theme.Pds

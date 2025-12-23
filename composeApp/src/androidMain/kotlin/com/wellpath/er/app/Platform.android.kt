@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package com.wellpath.er.app
 
 import android.os.Build

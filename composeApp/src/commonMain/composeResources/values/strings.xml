@@ -10,6 +10,11 @@
     <string name="lbl_finish">Finish</string>
     <string name="lbl_loading">Loading</string>
     <string name="lbl_view_all">View All</string>
+    <string name="lbl_start">Start</string>
+    <string name="lbl_start_again">Start again</string>
+    <string name="lbl_stop">Stop</string>
+    <string name="lbl_finished">Finished</string>
+    <string name="lbl_save">Save</string>
 
     <!--  FAILURE  -->
     <string name="lbl_failure_label">Server connection error</string>
@@ -100,4 +105,15 @@
     <string name="lbl_dashboard">Dashboard</string>
     <string name="lbl_journal">Journal</string>
     <string name="lbl_exercises">Exercises</string>
+    <string name="lbl_breathing">Breathing</string>
+    <string name="lbl_breathing_description">A steady breathing pattern that helps calm your body and bring your focus back to the present</string>
+    <string name="lbl_cbt">CBT</string>
+    <string name="lbl_cbt_description">Notice patterns in your thoughts and behaviors and practice healthier responses</string>
+    <string name="lbl_mindfulness">Mindfulness</string>
+    <string name="lbl_mindfulness_description">Focus on the present moment with calm, open awareness</string>
+
+    <string name="lbl_inhale">Inhale</string>
+    <string name="lbl_exhale">Exhale</string>
+    <string name="lbl_hold">Hold</string>
+    <string name="lbl_exercise_finish_message">Congratulation! You completed this exercise in %1$s!</string>
 </resources>

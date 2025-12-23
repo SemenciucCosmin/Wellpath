@@ -5,6 +5,7 @@ import com.wellpath.er.di.KoinInitializer
 import com.wellpath.er.ui.navigation.graph.AppNavGraph
 import com.wellpath.er.ui.theme.WellpathTheme
 
+@Suppress("FunctionNaming")
 fun MainViewController() = ComposeUIViewController(
     configure = {
         KoinInitializer.initKoin()

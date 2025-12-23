@@ -7,4 +7,13 @@ sealed class ExercisesNavDestination {
 
     @Serializable
     data object Exercises : ExercisesNavDestination()
+
+    @Serializable
+    data object Breathing : ExercisesNavDestination()
+
+    @Serializable
+    data object CBT : ExercisesNavDestination()
+
+    @Serializable
+    data object Mindfulness : ExercisesNavDestination()
 }

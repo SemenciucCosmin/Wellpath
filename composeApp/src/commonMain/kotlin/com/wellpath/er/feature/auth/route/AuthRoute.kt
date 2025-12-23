@@ -9,10 +9,8 @@ import androidx.navigation.NavController
 import com.wellpath.er.feature.auth.component.AuthScreen
 import com.wellpath.er.feature.auth.viewmodel.AuthViewModel
 import com.wellpath.er.feature.auth.viewmodel.model.AuthUiState
-import com.wellpath.er.feature.dashboard.route.DashboardRoute
 import com.wellpath.er.ui.components.EventHandler
 import com.wellpath.er.ui.navigation.model.DashboardNavDestination
-import com.wellpath.er.ui.navigation.model.StartupNavDestination
 import org.koin.compose.viewmodel.koinViewModel
 
 /**

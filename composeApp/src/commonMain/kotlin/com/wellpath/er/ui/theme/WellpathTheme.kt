@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 @Composable
 fun WellpathTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable() () -> Unit,
+    content:
+    @Composable()
+    () -> Unit,
 ) {
     val colorScheme = when {
         darkTheme -> darkScheme

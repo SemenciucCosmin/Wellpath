@@ -3,6 +3,7 @@ package com.wellpath.er.di
 import com.wellpath.er.data.auth.di.authDataModule
 import com.wellpath.er.feature.auth.di.authFeatureModule
 import com.wellpath.er.feature.dashboard.di.dashboardFeatureModule
+import com.wellpath.er.feature.exercises.breathing.di.breathingFeatureModule
 import com.wellpath.er.feature.journal.di.journalFeatureModule
 import com.wellpath.er.feature.startup.di.startupFeatureModule
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +21,7 @@ fun commonModule() = module {
 
     includes(authDataModule())
     includes(authFeatureModule())
+    includes(breathingFeatureModule())
     includes(dashboardFeatureModule())
     includes(journalFeatureModule())
     includes(startupFeatureModule())

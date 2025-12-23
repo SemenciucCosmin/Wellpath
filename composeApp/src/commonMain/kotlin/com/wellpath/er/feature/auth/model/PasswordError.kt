@@ -8,7 +8,6 @@ import wellpath.composeapp.generated.resources.lbl_invalid_password
 import wellpath.composeapp.generated.resources.lbl_passwords_not_matching
 import wellpath.composeapp.generated.resources.lbl_weak_password
 
-
 /**
  * Enum class for all possible states of the password text field.
  */

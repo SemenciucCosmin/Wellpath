@@ -26,7 +26,7 @@ fun StartupRoute(navController: NavController) {
         )
     }
 
-    EventHandler(viewModel.events) {event ->
+    EventHandler(viewModel.events) { event ->
         when (event) {
             StartupEvent.NOT_SIGNED_IN -> navController.navigate(StartupNavDestination.Auth)
             StartupEvent.SIGNED_IN -> navController.navigate(DashboardNavDestination.Dashboard)

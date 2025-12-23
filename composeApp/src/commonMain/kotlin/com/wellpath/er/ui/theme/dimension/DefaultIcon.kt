@@ -1,4 +1,4 @@
-package com.ubb.fmi.orar.ui.theme.dimension
+package com.wellpath.er.ui.theme.dimension
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

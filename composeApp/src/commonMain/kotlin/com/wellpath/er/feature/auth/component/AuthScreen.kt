@@ -15,15 +15,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import com.wellpath.er.feature.auth.model.AuthScreenType
+import com.wellpath.er.feature.auth.model.EmailError
 import com.wellpath.er.feature.auth.model.PasswordError
 import com.wellpath.er.ui.components.ProgressOverlay
 import com.wellpath.er.ui.dimension.Spacing
-import com.wellpath.er.feature.auth.model.EmailError
 import org.jetbrains.compose.resources.stringResource
 
 /**
  * Screen for sign in and sign up flows
  */
+@Suppress("MagicNumber")
 @Composable
 fun AuthScreen(
     authScreenType: AuthScreenType,

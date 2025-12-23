@@ -18,9 +18,9 @@ fun AppNavGraph(
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None },
     ) {
-        StartupNavGraph(navController)
-        DashboardNavGraph(navController)
-        JournalNavGraph(navController)
-        ExercisesNavGraph(navController)
+        startupNavGraph(navController)
+        dashboardNavGraph(navController)
+        journalNavGraph(navController)
+        exercisesNavGraph(navController)
     }
 }

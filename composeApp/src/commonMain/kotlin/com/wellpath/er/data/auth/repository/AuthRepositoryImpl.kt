@@ -2,10 +2,10 @@ package com.wellpath.er.data.auth.repository
 
 import com.wellpath.er.data.auth.model.FirebaseUser
 import com.wellpath.er.domain.extensions.BLANK
-import kotlinx.coroutines.flow.Flow
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.auth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapLatest
 
 /**
