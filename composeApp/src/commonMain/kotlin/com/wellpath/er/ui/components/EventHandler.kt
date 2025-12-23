@@ -1,10 +1,10 @@
 package com.wellpath.er.ui.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wellpath.er.ui.viewmodel.model.Event
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +20,7 @@ fun <T : Event> EventHandler(
     eventsFlow: StateFlow<ImmutableList<T>>,
     onEvent: @Composable (T) -> Unit
 ) {
-    val events by eventsFlow.collectAsStateWithLifecycle()
+    val events by eventsFlow.collectAsState()
     val event by remember { derivedStateOf { events.firstOrNull() } }
     event?.let { onEvent(it) }
 }

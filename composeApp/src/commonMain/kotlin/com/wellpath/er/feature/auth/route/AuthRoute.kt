@@ -2,9 +2,9 @@ package com.wellpath.er.feature.auth.route
 
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.wellpath.er.feature.auth.component.AuthScreen
 import com.wellpath.er.feature.auth.viewmodel.AuthViewModel
@@ -19,7 +19,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun AuthRoute(navController: NavController) {
     val viewModel = koinViewModel<AuthViewModel>()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsState()
 
     AuthScreen(
         modifier = Modifier.imePadding(),
