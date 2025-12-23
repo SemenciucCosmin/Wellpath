@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.wellpath.er.ui.navigation.AppNavGraph
+import com.wellpath.er.ui.navigation.graph.AppNavGraph
 import com.wellpath.er.ui.theme.WellpathTheme
 
 class MainActivity : ComponentActivity() {

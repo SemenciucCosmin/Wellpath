@@ -1,0 +1,26 @@
+package com.wellpath.er.ui.navigation.graph
+
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.wellpath.er.ui.navigation.model.StartupNavDestination
+
+@Composable
+fun AppNavGraph(
+    navController: NavHostController = rememberNavController(),
+) {
+    NavHost(
+        navController = navController,
+        startDestination = StartupNavDestination.Startup,
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None },
+    ) {
+        StartupNavGraph(navController)
+        DashboardNavGraph(navController)
+        JournalNavGraph(navController)
+        ExercisesNavGraph(navController)
+    }
+}

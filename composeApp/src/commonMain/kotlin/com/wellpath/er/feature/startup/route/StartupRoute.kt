@@ -10,7 +10,8 @@ import com.wellpath.er.feature.startup.viewmodel.StartupViewModel
 import com.wellpath.er.feature.startup.viewmodel.model.StartupEvent
 import com.wellpath.er.ui.components.EventHandler
 import com.wellpath.er.ui.components.ProgressOverlay
-import com.wellpath.er.ui.navigation.model.AppNavDestination
+import com.wellpath.er.ui.navigation.model.DashboardNavDestination
+import com.wellpath.er.ui.navigation.model.StartupNavDestination
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -27,8 +28,8 @@ fun StartupRoute(navController: NavController) {
 
     EventHandler(viewModel.events) {event ->
         when (event) {
-            StartupEvent.NOT_SIGNED_IN -> navController.navigate(AppNavDestination.Auth)
-            StartupEvent.SIGNED_IN -> navController.navigate(AppNavDestination.Welcome)
+            StartupEvent.NOT_SIGNED_IN -> navController.navigate(StartupNavDestination.Auth)
+            StartupEvent.SIGNED_IN -> navController.navigate(DashboardNavDestination.Dashboard)
         }
     }
 }

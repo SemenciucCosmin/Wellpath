@@ -1,0 +1,23 @@
+package com.wellpath.er.ui.navigation.graph
+
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+import com.wellpath.er.feature.auth.route.AuthRoute
+import com.wellpath.er.feature.dashboard.route.DashboardRoute
+import com.wellpath.er.feature.journal.route.JournalRoute
+import com.wellpath.er.feature.startup.route.StartupRoute
+import com.wellpath.er.ui.navigation.model.DashboardNavDestination
+import com.wellpath.er.ui.navigation.model.JournalNavDestination
+import com.wellpath.er.ui.navigation.model.StartupNavDestination
+
+fun NavGraphBuilder.JournalNavGraph(navController: NavController) {
+    composable<JournalNavDestination.Journal> {
+        JournalRoute(navController)
+    }
+
+    composable<JournalNavDestination.JournalPage> {
+
+    }
+}
