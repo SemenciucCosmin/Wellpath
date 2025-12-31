@@ -8,6 +8,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -44,7 +45,12 @@ fun TitleBar(
 ) {
     TopAppBar(
         modifier = modifier,
-        title = { Text(label) },
+        title = {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.titleMedium,
+            )
+        },
         navigationIcon = {
             if (onAction != null && actionIcon != null) {
                 IconButton(onClick = onAction) {
@@ -68,7 +74,7 @@ fun TitleBar(
 @Composable
 private fun OverflowMenu(
     modifier: Modifier = Modifier,
-    menuItems: ImmutableList<TitleBarMenuItem>
+    menuItems: ImmutableList<TitleBarMenuItem>,
 ) {
     var isExpanded by remember { mutableStateOf(false) }
 
@@ -94,7 +100,7 @@ private fun OverflowMenu(
 @Composable
 private fun VisibleMenu(
     modifier: Modifier = Modifier,
-    menuItems: ImmutableList<TitleBarMenuItem>
+    menuItems: ImmutableList<TitleBarMenuItem>,
 ) {
     Row(
         modifier = modifier,
