@@ -9,5 +9,7 @@ sealed class JournalNavDestination {
     data object Journal : JournalNavDestination()
 
     @Serializable
-    data object JournalPage : JournalNavDestination()
+    data class JournalPage(
+        val isReadOnly: Boolean,
+    ) : JournalNavDestination()
 }

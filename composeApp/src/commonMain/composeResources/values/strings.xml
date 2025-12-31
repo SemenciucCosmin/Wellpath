@@ -117,7 +117,7 @@
     <string name="lbl_hold">Hold</string>
     <string name="lbl_exercise_finish_message">Congratulation! You completed this exercise in %1$s!</string>
     <string name="lbl_mood_slider_description">Give a score to your mood through the day</string>
-    <string name="lbl_journal_entry_description">Describe how your day wa</string>
+    <string name="lbl_journal_entry_description">Describe how your day was</string>
     <string name="lbl_mood_slider_min">Bad</string>
     <string name="lbl_mood_slider_medium">Medium</string>
     <string name="lbl_mood_slider_max">Good</string>

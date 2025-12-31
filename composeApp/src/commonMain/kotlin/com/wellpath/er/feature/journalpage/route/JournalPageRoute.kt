@@ -22,6 +22,7 @@ import com.wellpath.er.ui.components.TitleBar
 import com.wellpath.er.ui.model.TitleBarMenuItem
 import com.wellpath.er.ui.theme.Pds
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -31,7 +32,10 @@ import wellpath.composeapp.generated.resources.lbl_journal_entry_description
 import wellpath.composeapp.generated.resources.lbl_save
 
 @Composable
-fun JournalPageRoute(navController: NavController) {
+fun JournalPageRoute(
+    navController: NavController,
+    isReadOnly: Boolean,
+) {
     val viewModel: JournalPageViewModel = koinViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -41,15 +45,15 @@ fun JournalPageRoute(navController: NavController) {
                 label = uiState.date,
                 actionIcon = painterResource(Res.drawable.ic_left_arrow),
                 onAction = navController::navigateUp,
-                menuItems = persistentListOf(
+                menuItems = listOfNotNull(
                     TitleBarMenuItem(
                         label = stringResource(Res.string.lbl_save),
                         action = {
                             viewModel.saveJournalPage()
                             navController.navigateUp()
                         },
-                    )
-                )
+                    ).takeIf { !isReadOnly }
+                ).toImmutableList()
             )
         }
     ) { paddingValues ->
@@ -60,8 +64,10 @@ fun JournalPageRoute(navController: NavController) {
         ) {
             MoodSlider(
                 value = uiState.moodScore,
-                onValueChange = viewModel::changeMoodScore,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = {
+                    if (!isReadOnly) viewModel.changeMoodScore(it)
+                },
             )
 
             Spacer(modifier = Modifier.size(Pds.spacing.Large))
@@ -79,7 +85,9 @@ fun JournalPageRoute(navController: NavController) {
 
             OutlinedTextField(
                 value = uiState.journalEntry,
-                onValueChange = viewModel::changeJournalEntry,
+                onValueChange = {
+                    if (!isReadOnly) viewModel.changeJournalEntry(it)
+                },
                 shape = MaterialTheme.shapes.large,
                 modifier = Modifier
                     .fillMaxWidth()
