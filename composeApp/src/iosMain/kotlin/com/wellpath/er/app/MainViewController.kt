@@ -13,6 +13,8 @@ fun MainViewController() = ComposeUIViewController(
     }
 ) {
     WellpathTheme {
-        AppNavGraph()
+        AppNavGraph(
+            isPatient = true
+        )
     }
 }

@@ -10,6 +10,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.wellpath.er.domain.extensions.getContext
+import com.wellpath.er.domain.extensions.showToast
+import com.wellpath.er.domain.model.ToastLength
 import com.wellpath.er.feature.assignment.components.AssignmentItem
 import com.wellpath.er.feature.journalpage.components.JournalPageForm
 import com.wellpath.er.feature.journalpage.viewmodel.JournalPageViewModel
@@ -23,6 +26,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.ic_left_arrow
+import wellpath.composeapp.generated.resources.lbl_journal_saved_successfully
 import wellpath.composeapp.generated.resources.lbl_save
 
 @Composable
@@ -36,6 +40,8 @@ fun JournalPageRoute(
     )
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val context = getContext()
+    val toastMessage = stringResource(Res.string.lbl_journal_saved_successfully)
 
     Scaffold(
         topBar = {
@@ -49,6 +55,11 @@ fun JournalPageRoute(
                         action = {
                             viewModel.saveJournalPage()
                             navController.navigateUp()
+                            showToast(
+                                context = context,
+                                message = toastMessage,
+                                length = ToastLength.SHORT
+                            )
                         },
                     ).takeIf { !isReadOnly }
                 ).toImmutableList()

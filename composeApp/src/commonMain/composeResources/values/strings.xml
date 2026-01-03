@@ -15,6 +15,9 @@
     <string name="lbl_stop">Stop</string>
     <string name="lbl_finished">Finished</string>
     <string name="lbl_save">Save</string>
+    <string name="lbl_exercise_saved_successfully">Exercise saved successfully</string>
+    <string name="lbl_journal_saved_successfully">Journal page saved successfully</string>
+    <string name="lbl_exercise_assigned_successfully">Exercise assigned successfully</string>
     <string name="lbl_patients">Patients</string>
 
     <!--  FAILURE  -->
@@ -127,6 +130,8 @@
     <string name="lbl_assignment_journal_message">Write a page in your journal for today. Describe how you felt and how your day unraveled.</string>
     <string name="lbl_assignment_exercise_breathing">Breathing Exercise</string>
     <string name="lbl_assignment_exercise_breathing_message">Try a breathing exercise today. This will help you focus, ground and control your emotions.</string>
+    <string name="lbl_assignment_exercise_cbt">CBT Exercise</string>
+    <string name="lbl_assignment_exercise_cbt_message">Try a cbt exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_assignment_exercise_mindfulness">Mindfulness Exercise</string>
     <string name="lbl_assignment_exercise_mindfulness_message">Try a mindfulness exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_completed">Completed</string>

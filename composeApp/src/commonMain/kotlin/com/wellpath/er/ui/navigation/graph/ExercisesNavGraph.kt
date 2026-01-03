@@ -7,9 +7,15 @@ import com.wellpath.er.feature.exercises.breathing.route.BreathingRoute
 import com.wellpath.er.feature.exercises.exercises.route.ExercisesRoute
 import com.wellpath.er.ui.navigation.model.ExercisesNavDestination
 
-fun NavGraphBuilder.exercisesNavGraph(navController: NavController) {
+fun NavGraphBuilder.exercisesNavGraph(
+    isPatient: Boolean,
+    navController: NavController
+) {
     composable<ExercisesNavDestination.Exercises> {
-        ExercisesRoute(navController)
+        ExercisesRoute(
+            isPatient = isPatient,
+            navController = navController
+        )
     }
 
     composable<ExercisesNavDestination.Breathing> {

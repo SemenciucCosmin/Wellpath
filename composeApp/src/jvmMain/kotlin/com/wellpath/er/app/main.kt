@@ -15,7 +15,9 @@ fun main() = application {
         title = "Wellpath",
     ) {
         WellpathTheme {
-            AppNavGraph()
+            AppNavGraph(
+                isPatient = true
+            )
         }
     }
 }

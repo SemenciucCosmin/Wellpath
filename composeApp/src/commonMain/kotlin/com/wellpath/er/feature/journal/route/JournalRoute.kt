@@ -24,7 +24,10 @@ import kotlin.time.ExperimentalTime
 
 @OptIn(ExperimentalTime::class)
 @Composable
-fun JournalRoute(navController: NavController) {
+fun JournalRoute(
+    isPatient: Boolean,
+    navController: NavController
+) {
     val viewModel: JournalViewModel = koinViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -59,16 +62,18 @@ fun JournalRoute(navController: NavController) {
 
             Spacer(modifier = Modifier.weight(1f))
 
-            JournalWriteButton(
-                onClick = {
-                    val destination = JournalNavDestination.JournalPage(
-                        journalRecordId = uiState.currentJournalRecordId,
-                        isReadOnly = false
-                    )
+            if (isPatient) {
+                JournalWriteButton(
+                    onClick = {
+                        val destination = JournalNavDestination.JournalPage(
+                            journalRecordId = uiState.currentJournalRecordId,
+                            isReadOnly = false
+                        )
 
-                    navController.navigate(destination)
-                }
-            )
+                        navController.navigate(destination)
+                    }
+                )
+            }
         }
     }
 }

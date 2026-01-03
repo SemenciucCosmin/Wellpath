@@ -30,7 +30,10 @@ import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.lbl_dashboard
 
 @Composable
-fun DashboardRoute(navController: NavController) {
+fun DashboardRoute(
+    isPatient: Boolean,
+    navController: NavController
+) {
     val viewModel: DashboardViewModel = koinViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -52,10 +55,12 @@ fun DashboardRoute(navController: NavController) {
                         modifier = Modifier.weight(1f)
                     )
 
-                    PatientButton(
-                        patientName = uiState.selectedPatientName,
-                        onClick = { navController.navigate(PatientNavDestination.Patients) }
-                    )
+                    if (!isPatient) {
+                        PatientButton(
+                            patientName = uiState.selectedPatientName,
+                            onClick = { navController.navigate(PatientNavDestination.Patients) }
+                        )
+                    }
                 }
             }
 
@@ -65,7 +70,7 @@ fun DashboardRoute(navController: NavController) {
                 AssignmentItem(
                     assignment = assignment,
                     onClick = {
-                        if (assignment.isCompleted) return@AssignmentItem
+                        if (assignment.isCompleted || !isPatient) return@AssignmentItem
                         when (assignment.type) {
                             Assignment.Type.JOURNAL_PAGE -> {
                                 val destination = JournalNavDestination.JournalPage(
@@ -78,6 +83,10 @@ fun DashboardRoute(navController: NavController) {
 
                             Assignment.Type.EXERCISE_BREATHING -> {
                                 navController.navigate(ExercisesNavDestination.Breathing)
+                            }
+
+                            Assignment.Type.EXERCISE_CBT -> {
+                                navController.navigate(ExercisesNavDestination.CBT)
                             }
 
                             Assignment.Type.EXERCISE_MINDFULNESS -> {

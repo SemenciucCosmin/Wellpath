@@ -10,6 +10,7 @@ import com.wellpath.er.ui.navigation.model.StartupNavDestination
 
 @Composable
 fun AppNavGraph(
+    isPatient: Boolean,
     navController: NavHostController = rememberNavController(),
 ) {
     NavHost(
@@ -19,9 +20,9 @@ fun AppNavGraph(
         exitTransition = { ExitTransition.None },
     ) {
         startupNavGraph(navController)
-        dashboardNavGraph(navController)
+        dashboardNavGraph(isPatient, navController)
         patientNavGraph(navController)
-        journalNavGraph(navController)
-        exercisesNavGraph(navController)
+        journalNavGraph(isPatient, navController)
+        exercisesNavGraph(isPatient, navController)
     }
 }

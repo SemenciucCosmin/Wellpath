@@ -34,6 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.lbl_exercise_finish_message
+import wellpath.composeapp.generated.resources.lbl_exercise_saved_successfully
 import wellpath.composeapp.generated.resources.lbl_save
 
 @Composable
@@ -115,7 +116,7 @@ fun BreathingRoute(navController: NavController) {
                 navController.navigateUp()
                 showToast(
                     context = getContext(),
-                    message = stringResource(Res.string.lbl_save),
+                    message = stringResource(Res.string.lbl_exercise_saved_successfully),
                     length = ToastLength.SHORT
                 )
             }

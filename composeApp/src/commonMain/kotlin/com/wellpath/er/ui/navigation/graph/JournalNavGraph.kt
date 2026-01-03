@@ -8,9 +8,15 @@ import com.wellpath.er.feature.journal.route.JournalRoute
 import com.wellpath.er.feature.journalpage.route.JournalPageRoute
 import com.wellpath.er.ui.navigation.model.JournalNavDestination
 
-fun NavGraphBuilder.journalNavGraph(navController: NavController) {
+fun NavGraphBuilder.journalNavGraph(
+    isPatient: Boolean,
+    navController: NavController
+) {
     composable<JournalNavDestination.Journal> {
-        JournalRoute(navController)
+        JournalRoute(
+            isPatient = isPatient,
+            navController = navController
+        )
     }
 
     composable<JournalNavDestination.JournalPage> { navEntry ->
