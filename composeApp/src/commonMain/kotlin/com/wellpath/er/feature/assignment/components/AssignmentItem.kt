@@ -1,4 +1,4 @@
-package com.wellpath.er.feature.journalpage.components
+package com.wellpath.er.feature.assignment.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,8 +27,11 @@ import wellpath.composeapp.generated.resources.ic_check
 import wellpath.composeapp.generated.resources.lbl_completed
 
 @Composable
-fun AssignmentItem(assignment: Assignment) {
-    Card {
+fun AssignmentItem(
+    assignment: Assignment,
+    onClick: () -> Unit = {}
+) {
+    Card(onClick = onClick) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(Pds.spacing.Medium),
             verticalAlignment = Alignment.CenterVertically,

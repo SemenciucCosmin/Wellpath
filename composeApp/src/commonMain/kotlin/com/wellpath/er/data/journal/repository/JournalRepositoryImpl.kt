@@ -38,9 +38,24 @@ class JournalRepositoryImpl : JournalRepository {
         assignment: Assignment,
     ) {
         val currentJournalRecord = getJournalRecord(journalRecordId)
-        val newAssignments = currentJournalRecord?.assignments?.toMutableList()?.apply {
-            add(assignment)
-        } ?: emptyList()
+        val newAssignments = when {
+            currentJournalRecord?.assignments?.map {
+                it.type
+            }?.contains(assignment.type) == true -> {
+                currentJournalRecord.assignments.map {
+                    when {
+                        it.type == assignment.type -> it.copy(isCompleted = true)
+                        else -> assignment
+                    }
+                }
+            }
+
+            else -> {
+                currentJournalRecord?.assignments?.toMutableList()?.apply {
+                    add(assignment)
+                } ?: emptyList()
+            }
+        }
 
         val newJournalRecord = currentJournalRecord?.copy(
             assignments = newAssignments.toImmutableList()
@@ -66,9 +81,17 @@ class JournalRepositoryImpl : JournalRepository {
         comment: String,
     ) {
         val currentJournalRecord = getJournalRecord(journalRecordId)
+        val assignments = currentJournalRecord?.assignments?.map {
+            when (it.type) {
+                Assignment.Type.JOURNAL_PAGE -> it.copy(isCompleted = true)
+                else -> it
+            }
+        }?.toImmutableList() ?: persistentListOf()
+
         val newJournalRecord = currentJournalRecord?.copy(
             moodScore = moodScore,
-            comment = comment
+            comment = comment,
+            assignments = assignments
         )
 
         newJournalRecord?.let {

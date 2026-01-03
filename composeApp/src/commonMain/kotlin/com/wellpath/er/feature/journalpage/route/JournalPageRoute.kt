@@ -10,7 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.wellpath.er.feature.journalpage.components.AssignmentItem
+import com.wellpath.er.feature.assignment.components.AssignmentItem
 import com.wellpath.er.feature.journalpage.components.JournalPageForm
 import com.wellpath.er.feature.journalpage.viewmodel.JournalPageViewModel
 import com.wellpath.er.ui.components.TitleBar
