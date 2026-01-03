@@ -17,6 +17,7 @@ fun NavGraphBuilder.journalNavGraph(navController: NavController) {
         val args = navEntry.toRoute<JournalNavDestination.JournalPage>()
         JournalPageRoute(
             navController = navController,
+            journalRecordId = args.journalRecordId,
             isReadOnly = args.isReadOnly
         )
     }

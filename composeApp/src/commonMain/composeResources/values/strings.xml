@@ -121,4 +121,12 @@
     <string name="lbl_mood_slider_min">Bad</string>
     <string name="lbl_mood_slider_medium">Medium</string>
     <string name="lbl_mood_slider_max">Good</string>
+
+    <string name="lbl_assignment_journal">Journal Page</string>
+    <string name="lbl_assignment_journal_message">Write a page in your journal for today. Describe how you felt and how your day unraveled.</string>
+    <string name="lbl_assignment_exercise_breathing">Breathing Exercise</string>
+    <string name="lbl_assignment_exercise_breathing_message">Try a breathing exercise today. This will help you focus, ground and control your emotions.</string>
+    <string name="lbl_assignment_exercise_mindfulness">Mindfulness Exercise</string>
+    <string name="lbl_assignment_exercise_mindfulness_message">Try a mindfulness exercise today. This will help you focus, ground and control your emotions.</string>
+    <string name="lbl_completed">Completed</string>
 </resources>

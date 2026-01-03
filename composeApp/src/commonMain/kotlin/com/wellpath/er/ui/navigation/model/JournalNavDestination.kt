@@ -10,6 +10,7 @@ sealed class JournalNavDestination {
 
     @Serializable
     data class JournalPage(
+        val journalRecordId: String?,
         val isReadOnly: Boolean,
     ) : JournalNavDestination()
 }

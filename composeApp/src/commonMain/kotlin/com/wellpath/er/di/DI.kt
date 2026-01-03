@@ -1,6 +1,7 @@
 package com.wellpath.er.di
 
 import com.wellpath.er.data.auth.di.authDataModule
+import com.wellpath.er.data.journal.di.journalDataModule
 import com.wellpath.er.feature.auth.di.authFeatureModule
 import com.wellpath.er.feature.dashboard.di.dashboardFeatureModule
 import com.wellpath.er.feature.exercises.breathing.di.breathingFeatureModule
@@ -24,6 +25,7 @@ fun commonModule() = module {
     includes(authFeatureModule())
     includes(breathingFeatureModule())
     includes(dashboardFeatureModule())
+    includes(journalDataModule())
     includes(journalFeatureModule())
     includes(journalPageFeatureModule())
     includes(startupFeatureModule())
