@@ -2,6 +2,7 @@ package com.wellpath.er.feature.journal.route
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -55,6 +56,8 @@ fun JournalRoute(navController: NavController) {
                     navController.navigate(destination)
                 }
             )
+
+            Spacer(modifier = Modifier.weight(1f))
 
             JournalWriteButton(
                 onClick = {

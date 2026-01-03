@@ -84,30 +84,46 @@ class JournalRepositoryImpl : JournalRepository {
         }
     }
 
+    @Suppress("CyclomaticComplexMethod")
     @OptIn(ExperimentalTime::class)
     private fun loadMockJournalRecords() {
         val currentDate = Clock.System.now().toLocalDateTime(
             TimeZone.currentSystemDefault()
         )
 
-        val mockRecords = (2024..2026).map { year ->
+        val mockRecords = (2025..2026).map { year ->
             Month.entries.map { month ->
-                (1..31).map { day ->
+                (1..month.days).map { day ->
+                    val comment = getMockComments().random().takeIf {
+                        Random.nextBoolean()
+                    } ?: String.BLANK
+
                     JournalRecord(
                         id = "$day$month$year",
                         day = day,
                         month = month,
                         year = year,
-                        moodScore = (0..10).random().toFloat(),
-                        comment = getMockComments().random(),
+                        moodScore = when {
+                            comment.isNotEmpty() -> (0..10).random().toFloat()
+                            else -> 5f
+                        },
+                        comment = comment,
                         assignments = Assignment.Type.entries.mapNotNull { type ->
                             Assignment(
                                 type = type,
-                                isCompleted = Random.nextBoolean(),
+                                isCompleted = when (type) {
+                                    Assignment.Type.JOURNAL_PAGE -> comment.isNotEmpty()
+                                    else -> Random.nextBoolean()
+                                },
                                 day = day,
                                 month = month,
                                 year = year
-                            ).takeIf { Random.nextBoolean() }
+                            ).takeIf {
+                                when (it.type) {
+                                    Assignment.Type.JOURNAL_PAGE -> true
+                                    else -> Random.nextBoolean()
+                                }
+                            }
                         }.toImmutableList()
                     )
                 }
@@ -115,17 +131,24 @@ class JournalRepositoryImpl : JournalRepository {
         }.flatten().toImmutableList()
 
         val clearedMockRecords = mockRecords.map { record ->
-            val hasHigherYear = record.year >= currentDate.year
-            val hasHigherMonth = record.month.ordinal >= currentDate.month.ordinal
-            val hasHigherDay = record.day >= currentDate.day
-            val hasHigherDate = hasHigherYear && hasHigherMonth && hasHigherDay
+            val hasHigherYear = record.year > currentDate.year
+            val isSameYear = record.year == currentDate.year
+            val hasHigherMonth = record.month.ordinal > currentDate.month.ordinal
+            val isSameMonth = record.month.ordinal == currentDate.month.ordinal
+            val hasHigherDay = record.day > currentDate.day
+
+            val emptyRecord = record.copy(
+                moodScore = 5f,
+                comment = String.BLANK,
+                assignments = persistentListOf()
+            )
 
             when {
-                hasHigherDate -> record.copy(
-                    moodScore = 5f,
-                    comment = String.BLANK,
-                    assignments = persistentListOf()
-                )
+                hasHigherYear -> emptyRecord
+                (hasHigherYear || isSameYear) && hasHigherMonth -> emptyRecord
+                (hasHigherYear || isSameYear) && (hasHigherMonth || isSameMonth) && hasHigherDay -> {
+                    emptyRecord
+                }
 
                 else -> record
             }
