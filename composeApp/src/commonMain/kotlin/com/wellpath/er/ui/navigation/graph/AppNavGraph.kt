@@ -20,6 +20,7 @@ fun AppNavGraph(
     ) {
         startupNavGraph(navController)
         dashboardNavGraph(navController)
+        patientNavGraph(navController)
         journalNavGraph(navController)
         exercisesNavGraph(navController)
     }

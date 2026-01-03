@@ -5,5 +5,5 @@ import com.wellpath.er.data.journal.repository.JournalRepositoryImpl
 import org.koin.dsl.module
 
 fun journalDataModule() = module {
-    single<JournalRepository> { JournalRepositoryImpl() }
+    single<JournalRepository> { JournalRepositoryImpl(get()) }
 }

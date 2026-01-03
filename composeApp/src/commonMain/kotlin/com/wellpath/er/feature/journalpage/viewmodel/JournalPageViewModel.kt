@@ -1,11 +1,15 @@
 package com.wellpath.er.feature.journalpage.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.wellpath.er.data.journal.repository.JournalRepository
 import com.wellpath.er.feature.journalpage.viewmodel.model.JournalPageUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class JournalPageViewModel(
     private val journalRecordId: String,
@@ -20,13 +24,16 @@ class JournalPageViewModel(
     }
 
     private fun getJournalRecord() {
-        val journalRecord = journalRepository.getJournalRecord(journalRecordId) ?: return
-        _uiState.update { state ->
-            state.copy(
-                moodScore = journalRecord.moodScore,
-                comment = journalRecord.comment,
-                assignments = journalRecord.assignments
-            )
+        viewModelScope.launch {
+            journalRepository.getJournalRecord(journalRecordId).filterNotNull().collectLatest {
+                _uiState.update { state ->
+                    state.copy(
+                        moodScore = it.moodScore,
+                        comment = it.comment,
+                        assignments = it.assignments
+                    )
+                }
+            }
         }
     }
 

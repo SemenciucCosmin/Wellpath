@@ -1,6 +1,7 @@
 package com.wellpath.er.feature.dashboard.viewmodel.model
 
 import com.wellpath.er.data.assignments.model.Assignment
+import com.wellpath.er.domain.extensions.BLANK
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.datetime.TimeZone
@@ -9,7 +10,8 @@ import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
 data class DashboardUiState(
-    val assignments: ImmutableList<Assignment> = persistentListOf()
+    val assignments: ImmutableList<Assignment> = persistentListOf(),
+    val selectedPatientName: String = String.BLANK,
 ) {
     @OptIn(ExperimentalTime::class)
     val currentJournalRecordId: String

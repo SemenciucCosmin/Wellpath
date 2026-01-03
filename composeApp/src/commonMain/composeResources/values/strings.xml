@@ -15,6 +15,7 @@
     <string name="lbl_stop">Stop</string>
     <string name="lbl_finished">Finished</string>
     <string name="lbl_save">Save</string>
+    <string name="lbl_patients">Patients</string>
 
     <!--  FAILURE  -->
     <string name="lbl_failure_label">Server connection error</string>

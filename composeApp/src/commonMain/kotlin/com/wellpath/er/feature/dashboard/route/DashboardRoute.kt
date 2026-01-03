@@ -1,6 +1,7 @@
 package com.wellpath.er.feature.dashboard.route
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -16,10 +17,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.wellpath.er.data.assignments.model.Assignment
 import com.wellpath.er.feature.assignment.components.AssignmentItem
+import com.wellpath.er.feature.dashboard.components.PatientButton
 import com.wellpath.er.feature.dashboard.viewmodel.DashboardViewModel
 import com.wellpath.er.ui.navigation.components.BottomBar
 import com.wellpath.er.ui.navigation.model.ExercisesNavDestination
 import com.wellpath.er.ui.navigation.model.JournalNavDestination
+import com.wellpath.er.ui.navigation.model.PatientNavDestination
 import com.wellpath.er.ui.theme.Pds
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -41,11 +44,19 @@ fun DashboardRoute(navController: NavController) {
                 .padding(Pds.spacing.Medium)
         ) {
             item {
-                Text(
-                    text = stringResource(Res.string.lbl_dashboard),
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.primary
-                )
+                Row {
+                    Text(
+                        text = stringResource(Res.string.lbl_dashboard),
+                        style = MaterialTheme.typography.headlineMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    PatientButton(
+                        patientName = uiState.selectedPatientName,
+                        onClick = { navController.navigate(PatientNavDestination.Patients) }
+                    )
+                }
             }
 
             item { Spacer(modifier = Modifier.size(Pds.spacing.Medium)) }

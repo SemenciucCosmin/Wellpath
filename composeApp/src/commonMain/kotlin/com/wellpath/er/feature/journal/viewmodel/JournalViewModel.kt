@@ -1,13 +1,16 @@
 package com.wellpath.er.feature.journal.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.wellpath.er.data.journal.model.Month
 import com.wellpath.er.data.journal.repository.JournalRepository
 import com.wellpath.er.feature.journal.viewmodel.model.JournalUiState
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class JournalViewModel(
     private val journalRepository: JournalRepository,
@@ -21,8 +24,12 @@ class JournalViewModel(
     }
 
     private fun loadRecords() {
-        _uiState.update {
-            it.copy(records = journalRepository.getJournalRecords().toImmutableList())
+        viewModelScope.launch {
+            journalRepository.getJournalRecords().collectLatest { records ->
+                _uiState.update {
+                    it.copy(records = records.toImmutableList())
+                }
+            }
         }
     }
 

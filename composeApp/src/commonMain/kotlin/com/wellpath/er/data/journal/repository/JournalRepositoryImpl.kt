@@ -6,30 +6,46 @@ import com.wellpath.er.data.journal.model.Month
 import com.wellpath.er.domain.extensions.BLANK
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.transform
+import kotlinx.coroutines.flow.update
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.random.Random
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
-class JournalRepositoryImpl : JournalRepository {
+class JournalRepositoryImpl(
+    private val coroutineScope: CoroutineScope,
+) : JournalRepository {
 
-    private val journalRecords: MutableList<JournalRecord> = mutableListOf()
+    private val _journalRecords = MutableStateFlow(getMockJournalRecords())
+    private val journalRecords = _journalRecords.stateIn(
+        scope = coroutineScope,
+        started = SharingStarted.Lazily,
+        initialValue = getMockJournalRecords()
+    )
 
-    init {
-        loadMockJournalRecords()
+    override fun getJournalRecords(): Flow<List<JournalRecord>> {
+        return journalRecords.transform {
+            emit(
+                it.sortedWith(
+                    compareBy<JournalRecord> { it.year }
+                        .thenBy { it.month }
+                        .thenBy { it.day }
+                )
+            )
+        }
     }
 
-    override fun getJournalRecords(): List<JournalRecord> {
-        return journalRecords.sortedWith(
-            compareBy<JournalRecord> { it.year }
-                .thenBy { it.month }
-                .thenBy { it.day }
-        )
-    }
-
-    override fun getJournalRecord(journalRecordId: String): JournalRecord? {
-        return journalRecords.firstOrNull { it.id == journalRecordId }
+    override fun getJournalRecord(journalRecordId: String): Flow<JournalRecord?> {
+        return journalRecords.transform { records ->
+            emit(records.firstOrNull { it.id == journalRecordId })
+        }
     }
 
     @OptIn(ExperimentalTime::class)
@@ -37,7 +53,7 @@ class JournalRepositoryImpl : JournalRepository {
         journalRecordId: String,
         assignment: Assignment,
     ) {
-        val currentJournalRecord = getJournalRecord(journalRecordId)
+        val currentJournalRecord = _journalRecords.value.firstOrNull { it.id == journalRecordId }
         val newAssignments = when {
             currentJournalRecord?.assignments?.map {
                 it.type
@@ -45,7 +61,7 @@ class JournalRepositoryImpl : JournalRepository {
                 currentJournalRecord.assignments.map {
                     when {
                         it.type == assignment.type -> it.copy(isCompleted = true)
-                        else -> assignment
+                        else -> it
                     }
                 }
             }
@@ -62,15 +78,14 @@ class JournalRepositoryImpl : JournalRepository {
         )
 
         newJournalRecord?.let {
-            val newRecords = journalRecords.map { journalRecord ->
+            val newRecords = _journalRecords.value.map { journalRecord ->
                 when {
                     journalRecord.id == newJournalRecord.id -> newJournalRecord
                     else -> journalRecord
                 }
             }
 
-            journalRecords.clear()
-            journalRecords.addAll(newRecords)
+            _journalRecords.update { newRecords }
         }
     }
 
@@ -80,7 +95,7 @@ class JournalRepositoryImpl : JournalRepository {
         moodScore: Float,
         comment: String,
     ) {
-        val currentJournalRecord = getJournalRecord(journalRecordId)
+        val currentJournalRecord = _journalRecords.value.firstOrNull { it.id == journalRecordId }
         val assignments = currentJournalRecord?.assignments?.map {
             when (it.type) {
                 Assignment.Type.JOURNAL_PAGE -> it.copy(isCompleted = true)
@@ -95,21 +110,20 @@ class JournalRepositoryImpl : JournalRepository {
         )
 
         newJournalRecord?.let {
-            val newRecords = journalRecords.map { journalRecord ->
+            val newRecords = _journalRecords.value.map { journalRecord ->
                 when {
                     journalRecord.id == newJournalRecord.id -> newJournalRecord
                     else -> journalRecord
                 }
             }
 
-            journalRecords.clear()
-            journalRecords.addAll(newRecords)
+            _journalRecords.update { newRecords }
         }
     }
 
     @Suppress("CyclomaticComplexMethod")
     @OptIn(ExperimentalTime::class)
-    private fun loadMockJournalRecords() {
+    private fun getMockJournalRecords(): List<JournalRecord> {
         val currentDate = Clock.System.now().toLocalDateTime(
             TimeZone.currentSystemDefault()
         )
@@ -177,7 +191,7 @@ class JournalRepositoryImpl : JournalRepository {
             }
         }
 
-        journalRecords.addAll(clearedMockRecords)
+        return clearedMockRecords
     }
 
     @Suppress("MaxLineLength")
