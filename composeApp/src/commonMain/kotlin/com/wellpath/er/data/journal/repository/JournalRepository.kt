@@ -9,9 +9,13 @@ interface JournalRepository {
 
     fun getJournalRecord(journalRecordId: String): JournalRecord?
 
-    fun addAssignment(assignment: Assignment)
+    fun addAssignment(
+        journalRecordId: String,
+        assignment: Assignment
+    )
 
     fun addJournalPageEntry(
+        journalRecordId: String,
         moodScore: Float,
         comment: String,
     )

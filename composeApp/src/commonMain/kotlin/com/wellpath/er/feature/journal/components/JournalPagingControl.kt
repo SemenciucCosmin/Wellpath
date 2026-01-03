@@ -1,4 +1,4 @@
-package com.wellpath.er.feature.journal.route
+package com.wellpath.er.feature.journal.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

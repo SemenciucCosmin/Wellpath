@@ -129,4 +129,17 @@
     <string name="lbl_assignment_exercise_mindfulness">Mindfulness Exercise</string>
     <string name="lbl_assignment_exercise_mindfulness_message">Try a mindfulness exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_completed">Completed</string>
+    <string name="lbl_write_in_journal">Write in journal</string>
+    <string name="lbl_january">January</string>
+    <string name="lbl_february">February</string>
+    <string name="lbl_march">March</string>
+    <string name="lbl_april">April</string>
+    <string name="lbl_may">May</string>
+    <string name="lbl_june">June</string>
+    <string name="lbl_july">July</string>
+    <string name="lbl_august">August</string>
+    <string name="lbl_september">September</string>
+    <string name="lbl_october">October</string>
+    <string name="lbl_november">November</string>
+    <string name="lbl_december">December</string>
 </resources>

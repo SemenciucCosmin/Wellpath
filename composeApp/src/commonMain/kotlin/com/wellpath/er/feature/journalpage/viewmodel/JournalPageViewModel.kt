@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class JournalPageViewModel(
-    private val journalRecordId: String?,
+    private val journalRecordId: String,
     private val journalRepository: JournalRepository,
 ) : ViewModel() {
 
@@ -20,15 +20,13 @@ class JournalPageViewModel(
     }
 
     private fun getJournalRecord() {
-        journalRecordId?.let {
-            val journalRecord = journalRepository.getJournalRecord(it) ?: return@let
-            _uiState.update { state ->
-                state.copy(
-                    moodScore = journalRecord.moodScore,
-                    comment = journalRecord.comment,
-                    assignments = journalRecord.assignments
-                )
-            }
+        val journalRecord = journalRepository.getJournalRecord(journalRecordId) ?: return
+        _uiState.update { state ->
+            state.copy(
+                moodScore = journalRecord.moodScore,
+                comment = journalRecord.comment,
+                assignments = journalRecord.assignments
+            )
         }
     }
 
@@ -46,6 +44,7 @@ class JournalPageViewModel(
 
     fun saveJournalPage() {
         journalRepository.addJournalPageEntry(
+            journalRecordId = journalRecordId,
             moodScore = _uiState.value.moodScore,
             comment = _uiState.value.comment
         )

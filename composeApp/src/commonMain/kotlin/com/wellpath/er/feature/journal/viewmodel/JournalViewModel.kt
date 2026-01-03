@@ -1,13 +1,13 @@
 package com.wellpath.er.feature.journal.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.wellpath.er.data.journal.model.Month
 import com.wellpath.er.data.journal.repository.JournalRepository
 import com.wellpath.er.feature.journal.viewmodel.model.JournalUiState
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.datetime.Month
 
 class JournalViewModel(
     private val journalRepository: JournalRepository,

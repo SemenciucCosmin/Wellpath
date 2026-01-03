@@ -28,7 +28,7 @@ import wellpath.composeapp.generated.resources.lbl_save
 @Composable
 fun JournalPageRoute(
     navController: NavController,
-    journalRecordId: String?,
+    journalRecordId: String,
     isReadOnly: Boolean,
 ) {
     val viewModel: JournalPageViewModel = koinViewModel(

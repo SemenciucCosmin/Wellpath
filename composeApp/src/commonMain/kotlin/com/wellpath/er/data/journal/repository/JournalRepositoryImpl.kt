@@ -2,8 +2,10 @@ package com.wellpath.er.data.journal.repository
 
 import com.wellpath.er.data.assignments.model.Assignment
 import com.wellpath.er.data.journal.model.JournalRecord
+import com.wellpath.er.data.journal.model.Month
+import com.wellpath.er.domain.extensions.BLANK
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.random.Random
@@ -31,9 +33,10 @@ class JournalRepositoryImpl : JournalRepository {
     }
 
     @OptIn(ExperimentalTime::class)
-    override fun addAssignment(assignment: Assignment) {
-        val currentDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
-        val journalRecordId = "${currentDate.year}${currentDate.month}${currentDate.day}"
+    override fun addAssignment(
+        journalRecordId: String,
+        assignment: Assignment,
+    ) {
         val currentJournalRecord = getJournalRecord(journalRecordId)
         val newAssignments = currentJournalRecord?.assignments?.toMutableList()?.apply {
             add(assignment)
@@ -44,19 +47,24 @@ class JournalRepositoryImpl : JournalRepository {
         )
 
         newJournalRecord?.let {
-            journalRecords.map { journalRecord ->
+            val newRecords = journalRecords.map { journalRecord ->
                 when {
                     journalRecord.id == newJournalRecord.id -> newJournalRecord
                     else -> journalRecord
                 }
             }
+
+            journalRecords.clear()
+            journalRecords.addAll(newRecords)
         }
     }
 
     @OptIn(ExperimentalTime::class)
-    override fun addJournalPageEntry(moodScore: Float, comment: String) {
-        val currentDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
-        val journalRecordId = "${currentDate.year}${currentDate.month}${currentDate.day}"
+    override fun addJournalPageEntry(
+        journalRecordId: String,
+        moodScore: Float,
+        comment: String,
+    ) {
         val currentJournalRecord = getJournalRecord(journalRecordId)
         val newJournalRecord = currentJournalRecord?.copy(
             moodScore = moodScore,
@@ -64,41 +72,66 @@ class JournalRepositoryImpl : JournalRepository {
         )
 
         newJournalRecord?.let {
-            journalRecords.map { journalRecord ->
+            val newRecords = journalRecords.map { journalRecord ->
                 when {
                     journalRecord.id == newJournalRecord.id -> newJournalRecord
                     else -> journalRecord
                 }
             }
+
+            journalRecords.clear()
+            journalRecords.addAll(newRecords)
         }
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun loadMockJournalRecords() {
-        journalRecords.addAll(
-            (2024..2026).map { year ->
-                Month.entries.map { month ->
-                    (1..31).map { day ->
-                        JournalRecord(
-                            id = "$day$month$year",
-                            day = day,
-                            month = month,
-                            year = year,
-                            moodScore = (0..10).random().toFloat(),
-                            comment = getMockComments().random(),
-                            assignments = Assignment.Type.entries.mapNotNull { type ->
-                                Assignment(
-                                    type = type,
-                                    isCompleted = Random.nextBoolean(),
-                                    day = day,
-                                    month = month,
-                                    year = year
-                                ).takeIf { Random.nextBoolean() }
-                            }.toImmutableList()
-                        )
-                    }
-                }.flatten()
-            }.flatten().toImmutableList()
+        val currentDate = Clock.System.now().toLocalDateTime(
+            TimeZone.currentSystemDefault()
         )
+
+        val mockRecords = (2024..2026).map { year ->
+            Month.entries.map { month ->
+                (1..31).map { day ->
+                    JournalRecord(
+                        id = "$day$month$year",
+                        day = day,
+                        month = month,
+                        year = year,
+                        moodScore = (0..10).random().toFloat(),
+                        comment = getMockComments().random(),
+                        assignments = Assignment.Type.entries.mapNotNull { type ->
+                            Assignment(
+                                type = type,
+                                isCompleted = Random.nextBoolean(),
+                                day = day,
+                                month = month,
+                                year = year
+                            ).takeIf { Random.nextBoolean() }
+                        }.toImmutableList()
+                    )
+                }
+            }.flatten()
+        }.flatten().toImmutableList()
+
+        val clearedMockRecords = mockRecords.map { record ->
+            val hasHigherYear = record.year >= currentDate.year
+            val hasHigherMonth = record.month.ordinal >= currentDate.month.ordinal
+            val hasHigherDay = record.day >= currentDate.day
+            val hasHigherDate = hasHigherYear && hasHigherMonth && hasHigherDay
+
+            when {
+                hasHigherDate -> record.copy(
+                    moodScore = 5f,
+                    comment = String.BLANK,
+                    assignments = persistentListOf()
+                )
+
+                else -> record
+            }
+        }
+
+        journalRecords.addAll(clearedMockRecords)
     }
 
     @Suppress("MaxLineLength")

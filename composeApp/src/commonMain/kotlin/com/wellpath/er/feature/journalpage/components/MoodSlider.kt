@@ -52,7 +52,7 @@ fun MoodSlider(
             colors = SliderDefaults.colors(
                 activeTrackColor = Color.Transparent,
                 inactiveTrackColor = Color.Transparent,
-                thumbColor = Color.White
+                thumbColor = MaterialTheme.colorScheme.outline
             ),
             modifier = modifier.background(sliderGradient, MaterialTheme.shapes.extraLarge)
         )
