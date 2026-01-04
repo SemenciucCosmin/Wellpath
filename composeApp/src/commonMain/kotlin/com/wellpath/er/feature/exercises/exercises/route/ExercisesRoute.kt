@@ -128,7 +128,7 @@ fun ExercisesRoute(
                 onClick = {
                     if (isPatient) {
                         TestScope.create(koin)
-                        navController.navigate(TestNavDestination.Test)
+                        navController.navigate(TestNavDestination.Test(index = 0))
                     }
                 },
                 onAddClick = {

@@ -6,6 +6,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.wellpath.er.domain.extensions.getContext
+import com.wellpath.er.domain.extensions.showToast
+import com.wellpath.er.domain.model.ToastLength
 import com.wellpath.er.feature.test.component.TestScreen
 import com.wellpath.er.feature.test.di.TestScope
 import com.wellpath.er.feature.test.viewmodel.TestViewModel
@@ -13,7 +16,10 @@ import com.wellpath.er.feature.test.viewmodel.model.TestUiState
 import com.wellpath.er.ui.components.EventHandler
 import com.wellpath.er.ui.navigation.model.TestNavDestination
 import com.wellpath.er.ui.theme.Pds
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.getKoin
+import wellpath.composeapp.generated.resources.Res
+import wellpath.composeapp.generated.resources.lbl_test_completed_successfully
 
 /**
  * Route for form onboarding flow
@@ -57,7 +63,13 @@ fun TestRoute(
             }
             TestUiState.TestEvent.FINISH_FORM -> {
                 viewModel.unregisterEvent(event)
-                TestScope.delete(koin)
+                showToast(
+                    context = getContext(),
+                    message = stringResource(Res.string.lbl_test_completed_successfully),
+                    length = ToastLength.SHORT
+                )
+                navController.navigateUp()
+//                TestScope.delete(koin)
             }
         }
     }

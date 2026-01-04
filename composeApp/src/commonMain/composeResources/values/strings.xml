@@ -17,6 +17,7 @@
     <string name="lbl_save">Save</string>
     <string name="lbl_test_bfi_results">Test BFI results</string>
     <string name="lbl_exercise_saved_successfully">Exercise saved successfully</string>
+    <string name="lbl_test_completed_successfully">Test completed successfully</string>
     <string name="lbl_journal_saved_successfully">Journal page saved successfully</string>
     <string name="lbl_exercise_assigned_successfully">Exercise assigned successfully</string>
     <string name="lbl_patients">Patients</string>
@@ -26,7 +27,7 @@
     <string name="lbl_failure_message">Something went wrong. Please try again.</string>
     <string name="lbl_failure_accessibility">Failure</string>
     <string name="lbl_retry">Retry</string>
-    <string name="lbl_no_results">No results for %s</string>
+    <string name="lbl_no_results">No results for %1$s!</string>
 
     <!--  AUTH  -->
     <string name="lbl_sign_in">Sign in</string>
@@ -74,7 +75,7 @@
 
     <!--  FORM  -->
     <string name="lbl_form_questions_message">Choose how accurately each statement reflects you:</string>
-    <string name="lbl_page_counter">Page %d/%d</string>
+    <string name="lbl_page_counter">Page %1$s! / %1$s!</string>
 
     <!--  FORM QUESTION RESPONSE OPTION  -->
     <string name="lbl_strongly_disagree">strongly disagree</string>
