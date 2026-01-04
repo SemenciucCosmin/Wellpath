@@ -28,6 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.ic_check
+import wellpath.composeapp.generated.resources.ic_left_arrow
 import wellpath.composeapp.generated.resources.lbl_patients
 
 @Composable
@@ -36,7 +37,13 @@ fun PatientsRoute(navController: NavController) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
-        topBar = { TitleBar(label = stringResource(Res.string.lbl_patients)) }
+        topBar = {
+            TitleBar(
+                label = stringResource(Res.string.lbl_patients),
+                actionIcon = painterResource(Res.drawable.ic_left_arrow),
+                onAction = navController::navigateUp,
+            )
+        }
     ) { paddingValues ->
         LazyColumn(
             modifier = Modifier.padding(paddingValues),

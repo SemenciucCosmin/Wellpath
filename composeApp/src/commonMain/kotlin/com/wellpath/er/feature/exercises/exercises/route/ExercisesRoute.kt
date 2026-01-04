@@ -13,12 +13,15 @@ import com.wellpath.er.domain.extensions.getContext
 import com.wellpath.er.domain.extensions.showToast
 import com.wellpath.er.domain.model.ToastLength
 import com.wellpath.er.feature.exercises.exercises.viewmodel.ExercisesViewModel
+import com.wellpath.er.feature.test.di.TestScope
 import com.wellpath.er.ui.components.NavigationCard
 import com.wellpath.er.ui.navigation.components.BottomBar
 import com.wellpath.er.ui.navigation.model.ExercisesNavDestination
+import com.wellpath.er.ui.navigation.model.TestNavDestination
 import com.wellpath.er.ui.theme.Pds
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.getKoin
 import org.koin.compose.viewmodel.koinViewModel
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.ic_student
@@ -29,12 +32,15 @@ import wellpath.composeapp.generated.resources.lbl_cbt_description
 import wellpath.composeapp.generated.resources.lbl_exercise_saved_successfully
 import wellpath.composeapp.generated.resources.lbl_mindfulness
 import wellpath.composeapp.generated.resources.lbl_mindfulness_description
+import wellpath.composeapp.generated.resources.lbl_test_bfi
+import wellpath.composeapp.generated.resources.lbl_test_bfi_message
 
 @Composable
 fun ExercisesRoute(
     isPatient: Boolean,
     navController: NavController,
 ) {
+    val koin = getKoin()
     val viewModel: ExercisesViewModel = koinViewModel()
     val context = getContext()
     val toastMessage = stringResource(Res.string.lbl_exercise_saved_successfully)
@@ -105,6 +111,29 @@ fun ExercisesRoute(
                 onAddClick = {
                     if (!isPatient) {
                         viewModel.addAssignment(Assignment.Type.EXERCISE_MINDFULNESS)
+                        showToast(
+                            context = context,
+                            message = toastMessage,
+                            length = ToastLength.SHORT
+                        )
+                    }
+                }
+            )
+
+            NavigationCard(
+                isAddVisible = !isPatient,
+                title = stringResource(Res.string.lbl_test_bfi),
+                text = stringResource(Res.string.lbl_test_bfi_message),
+                painter = painterResource(Res.drawable.ic_student),
+                onClick = {
+                    if (isPatient) {
+                        TestScope.create(koin)
+                        navController.navigate(TestNavDestination.Test)
+                    }
+                },
+                onAddClick = {
+                    if (!isPatient) {
+                        viewModel.addAssignment(Assignment.Type.TEST_BFI)
                         showToast(
                             context = context,
                             message = toastMessage,

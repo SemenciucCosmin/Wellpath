@@ -24,5 +24,6 @@ fun AppNavGraph(
         patientNavGraph(navController)
         journalNavGraph(isPatient, navController)
         exercisesNavGraph(isPatient, navController)
+        testNavGraph(navController)
     }
 }

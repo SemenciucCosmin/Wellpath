@@ -27,7 +27,7 @@ class JournalRepositoryImpl(
     private val journalRecords = _journalRecords.stateIn(
         scope = coroutineScope,
         started = SharingStarted.Lazily,
-        initialValue = getMockJournalRecords()
+        initialValue = _journalRecords.value
     )
 
     override fun getJournalRecords(): Flow<List<JournalRecord>> {
@@ -60,7 +60,10 @@ class JournalRepositoryImpl(
             }?.contains(assignment.type) == true -> {
                 currentJournalRecord.assignments.map {
                     when {
-                        it.type == assignment.type -> it.copy(isCompleted = true)
+                        it.type == assignment.type && assignment.isCompleted -> {
+                            it.copy(isCompleted = true)
+                        }
+
                         else -> it
                     }
                 }

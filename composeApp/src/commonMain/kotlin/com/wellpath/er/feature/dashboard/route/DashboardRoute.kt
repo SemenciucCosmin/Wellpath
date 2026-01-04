@@ -19,12 +19,15 @@ import com.wellpath.er.data.assignments.model.Assignment
 import com.wellpath.er.feature.assignment.components.AssignmentItem
 import com.wellpath.er.feature.dashboard.components.PatientButton
 import com.wellpath.er.feature.dashboard.viewmodel.DashboardViewModel
+import com.wellpath.er.feature.test.di.TestScope
 import com.wellpath.er.ui.navigation.components.BottomBar
 import com.wellpath.er.ui.navigation.model.ExercisesNavDestination
 import com.wellpath.er.ui.navigation.model.JournalNavDestination
 import com.wellpath.er.ui.navigation.model.PatientNavDestination
+import com.wellpath.er.ui.navigation.model.TestNavDestination
 import com.wellpath.er.ui.theme.Pds
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.getKoin
 import org.koin.compose.viewmodel.koinViewModel
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.lbl_dashboard
@@ -34,6 +37,7 @@ fun DashboardRoute(
     isPatient: Boolean,
     navController: NavController
 ) {
+    val koin = getKoin()
     val viewModel: DashboardViewModel = koinViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -70,7 +74,14 @@ fun DashboardRoute(
                 AssignmentItem(
                     assignment = assignment,
                     onClick = {
+                        val isTest = assignment.type == Assignment.Type.TEST_BFI
+                        if (isTest && !isPatient && assignment.isCompleted) {
+                            navController.navigate(TestNavDestination.TestResults)
+                            return@AssignmentItem
+                        }
+
                         if (assignment.isCompleted || !isPatient) return@AssignmentItem
+
                         when (assignment.type) {
                             Assignment.Type.JOURNAL_PAGE -> {
                                 val destination = JournalNavDestination.JournalPage(
@@ -91,6 +102,11 @@ fun DashboardRoute(
 
                             Assignment.Type.EXERCISE_MINDFULNESS -> {
                                 navController.navigate(ExercisesNavDestination.Mindfulness)
+                            }
+
+                            Assignment.Type.TEST_BFI -> {
+                                TestScope.create(koin)
+                                navController.navigate(TestNavDestination.Test(index = 0))
                             }
                         }
                     }

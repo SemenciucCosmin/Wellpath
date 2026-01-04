@@ -15,7 +15,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WellpathTheme {
                 AppNavGraph(
-                    isPatient = false
+                    isPatient = true
                 )
             }
         }

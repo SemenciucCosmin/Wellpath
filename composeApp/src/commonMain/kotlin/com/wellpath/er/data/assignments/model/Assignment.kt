@@ -12,6 +12,8 @@ import wellpath.composeapp.generated.resources.lbl_assignment_exercise_mindfulne
 import wellpath.composeapp.generated.resources.lbl_assignment_exercise_mindfulness_message
 import wellpath.composeapp.generated.resources.lbl_assignment_journal
 import wellpath.composeapp.generated.resources.lbl_assignment_journal_message
+import wellpath.composeapp.generated.resources.lbl_test_bfi
+import wellpath.composeapp.generated.resources.lbl_test_bfi_message
 
 data class Assignment(
     val type: Type,
@@ -49,6 +51,12 @@ data class Assignment(
             labelRes = Res.string.lbl_assignment_exercise_mindfulness,
             messageRes = Res.string.lbl_assignment_exercise_mindfulness_message,
             color = Color(0xFF32CD32)
+        ),
+        TEST_BFI(
+            id = "test_bfi",
+            labelRes = Res.string.lbl_test_bfi,
+            messageRes = Res.string.lbl_test_bfi_message,
+            color = Color(0xFF5D3FD3)
         )
     }
 }

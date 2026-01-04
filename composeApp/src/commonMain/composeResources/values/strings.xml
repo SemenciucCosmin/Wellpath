@@ -15,6 +15,7 @@
     <string name="lbl_stop">Stop</string>
     <string name="lbl_finished">Finished</string>
     <string name="lbl_save">Save</string>
+    <string name="lbl_test_bfi_results">Test BFI results</string>
     <string name="lbl_exercise_saved_successfully">Exercise saved successfully</string>
     <string name="lbl_journal_saved_successfully">Journal page saved successfully</string>
     <string name="lbl_exercise_assigned_successfully">Exercise assigned successfully</string>
@@ -134,6 +135,8 @@
     <string name="lbl_assignment_exercise_cbt_message">Try a cbt exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_assignment_exercise_mindfulness">Mindfulness Exercise</string>
     <string name="lbl_assignment_exercise_mindfulness_message">Try a mindfulness exercise today. This will help you focus, ground and control your emotions.</string>
+    <string name="lbl_test_bfi">Test BFI</string>
+    <string name="lbl_test_bfi_message">Complete this BFI test. This will help your therapist better understand you.</string>
     <string name="lbl_completed">Completed</string>
     <string name="lbl_write_in_journal">Write in journal</string>
     <string name="lbl_january">January</string>
