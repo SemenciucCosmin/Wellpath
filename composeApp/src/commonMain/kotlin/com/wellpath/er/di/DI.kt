@@ -7,7 +7,9 @@ import com.wellpath.er.data.test.di.testDataModule
 import com.wellpath.er.feature.auth.di.authFeatureModule
 import com.wellpath.er.feature.dashboard.di.dashboardFeatureModule
 import com.wellpath.er.feature.exercises.breathing.di.breathingFeatureModule
+import com.wellpath.er.feature.exercises.cbt.di.cbtFeatureModule
 import com.wellpath.er.feature.exercises.exercises.di.exercisesFeatureModule
+import com.wellpath.er.feature.exercises.mindfulness.di.mindfulnessFeatureModule
 import com.wellpath.er.feature.journal.di.journalFeatureModule
 import com.wellpath.er.feature.journalpage.di.journalPageFeatureModule
 import com.wellpath.er.feature.patients.di.patientsFeatureModule
@@ -32,6 +34,8 @@ fun commonModule() = module {
 
     includes(breathingFeatureModule())
 
+    includes(cbtFeatureModule())
+
     includes(dashboardFeatureModule())
 
     includes(exercisesFeatureModule())
@@ -39,6 +43,8 @@ fun commonModule() = module {
     includes(journalDataModule())
     includes(journalFeatureModule())
     includes(journalPageFeatureModule())
+
+    includes(mindfulnessFeatureModule())
 
     includes(patientDataModule())
     includes(patientsFeatureModule())

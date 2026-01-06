@@ -12,6 +12,7 @@ import com.wellpath.er.data.assignments.model.Assignment
 import com.wellpath.er.domain.extensions.getContext
 import com.wellpath.er.domain.extensions.showToast
 import com.wellpath.er.domain.model.ToastLength
+import com.wellpath.er.feature.exercises.cbt.model.CbtStage
 import com.wellpath.er.feature.exercises.exercises.viewmodel.ExercisesViewModel
 import com.wellpath.er.feature.test.di.TestScope
 import com.wellpath.er.ui.components.NavigationCard
@@ -83,7 +84,9 @@ fun ExercisesRoute(
                 painter = painterResource(Res.drawable.ic_student),
                 onClick = {
                     if (isPatient) {
-                        navController.navigate(ExercisesNavDestination.CBT)
+                        navController.navigate(
+                            ExercisesNavDestination.CBT(stageId = CbtStage.SITUATION.id)
+                        )
                     }
                 },
                 onAddClick = {

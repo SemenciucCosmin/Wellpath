@@ -6,6 +6,7 @@
     <string name="lbl_no">No</string>
     <string name="lbl_accessibility_back">Back</string>
     <string name="lbl_next">Next</string>
+    <string name="lbl_back">Back</string>
     <string name="lbl_send">Send</string>
     <string name="lbl_finish">Finish</string>
     <string name="lbl_loading">Loading</string>
@@ -133,7 +134,7 @@
     <string name="lbl_assignment_exercise_breathing">Breathing Exercise</string>
     <string name="lbl_assignment_exercise_breathing_message">Try a breathing exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_assignment_exercise_cbt">CBT Exercise</string>
-    <string name="lbl_assignment_exercise_cbt_message">Try a cbt exercise today. This will help you focus, ground and control your emotions.</string>
+    <string name="lbl_assignment_exercise_cbt_message">Try a cbt exercise today. This exercise helps you explore a difficult thought and respond in a more balanced way.</string>
     <string name="lbl_assignment_exercise_mindfulness">Mindfulness Exercise</string>
     <string name="lbl_assignment_exercise_mindfulness_message">Try a mindfulness exercise today. This will help you focus, ground and control your emotions.</string>
     <string name="lbl_test_bfi">Test BFI</string>
@@ -152,4 +153,35 @@
     <string name="lbl_october">October</string>
     <string name="lbl_november">November</string>
     <string name="lbl_december">December</string>
+
+    <string name="lbl_situation_title">What happened?</string>
+    <string name="lbl_situation_instruction">Briefly describe the situation. Focus on what happened, not what it means.</string>
+    <string name="lbl_situation_clue">Describe the situation…</string>
+
+    <string name="lbl_automatic_thought_title">What thought came up?</string>
+    <string name="lbl_automatic_thought_instruction">What was the main thought that went through your mind?</string>
+    <string name="lbl_automatic_thought_clue">The thought I noticed was…</string>
+
+    <string name="lbl_emotion_and_intensity_title">How did you feel?</string>
+    <string name="lbl_emotion_and_intensity_instruction">Choose the emotion and how strong it felt.</string>
+    <string name="lbl_emotion_and_intensity_clue">The emotion I felt was…</string>
+
+    <string name="lbl_evidence_for_thought_title">What supports this thought?</string>
+    <string name="lbl_evidence_for_thought_instruction">List facts that seem to support the thought.</string>
+    <string name="lbl_evidence_for_thought_clue">Evidence for the thought…</string>
+
+    <string name="lbl_evidence_against_thought_title">What doesn’t support this thought?</string>
+    <string name="lbl_evidence_against_thought_instruction">List facts that don’t support the thought, or suggest another explanation.</string>
+    <string name="lbl_evidence_against_thought_clue">Evidence against the thought…</string>
+
+    <string name="lbl_balanced_thought_title">A more balanced thought</string>
+    <string name="lbl_balanced_thought_instruction">Using what you wrote, try to create a more realistic and compassionate thought.</string>
+    <string name="lbl_balanced_thought_clue">A more balanced thought could be…</string>
+
+    <string name="lbl_re_rate_emotion_title">How do you feel now?</string>
+    <string name="lbl_re_rate_emotion_instruction">Rate how strong the emotion feels right now.</string>
+    <string name="lbl_re_rate_emotion_clue">The emotion I feel now is…</string>
+
+    <string name="lbl_cbt_finish_title">Thank you for taking the time to reflect. Noticing your thoughts is a meaningful step toward change.</string>
+
 </resources>

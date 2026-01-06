@@ -19,6 +19,7 @@ import com.wellpath.er.data.assignments.model.Assignment
 import com.wellpath.er.feature.assignment.components.AssignmentItem
 import com.wellpath.er.feature.dashboard.components.PatientButton
 import com.wellpath.er.feature.dashboard.viewmodel.DashboardViewModel
+import com.wellpath.er.feature.exercises.cbt.model.CbtStage
 import com.wellpath.er.feature.test.di.TestScope
 import com.wellpath.er.ui.navigation.components.BottomBar
 import com.wellpath.er.ui.navigation.model.ExercisesNavDestination
@@ -35,7 +36,7 @@ import wellpath.composeapp.generated.resources.lbl_dashboard
 @Composable
 fun DashboardRoute(
     isPatient: Boolean,
-    navController: NavController
+    navController: NavController,
 ) {
     val koin = getKoin()
     val viewModel: DashboardViewModel = koinViewModel()
@@ -97,7 +98,11 @@ fun DashboardRoute(
                             }
 
                             Assignment.Type.EXERCISE_CBT -> {
-                                navController.navigate(ExercisesNavDestination.CBT)
+                                navController.navigate(
+                                    ExercisesNavDestination.CBT(
+                                        stageId = CbtStage.SITUATION.id
+                                    )
+                                )
                             }
 
                             Assignment.Type.EXERCISE_MINDFULNESS -> {

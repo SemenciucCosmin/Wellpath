@@ -12,7 +12,10 @@ sealed class ExercisesNavDestination {
     data object Breathing : ExercisesNavDestination()
 
     @Serializable
-    data object CBT : ExercisesNavDestination()
+    data class CBT(val stageId: Int) : ExercisesNavDestination()
+
+    @Serializable
+    data object CbtFinish : ExercisesNavDestination()
 
     @Serializable
     data object Mindfulness : ExercisesNavDestination()

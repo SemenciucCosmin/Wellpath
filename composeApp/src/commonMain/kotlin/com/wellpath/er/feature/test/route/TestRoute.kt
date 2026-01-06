@@ -68,7 +68,10 @@ fun TestRoute(
                     message = stringResource(Res.string.lbl_test_completed_successfully),
                     length = ToastLength.SHORT
                 )
-                navController.navigateUp()
+                navController.popBackStack(
+                    route = TestNavDestination.Test(index = 0),
+                    inclusive = true
+                )
 //                TestScope.delete(koin)
             }
         }
