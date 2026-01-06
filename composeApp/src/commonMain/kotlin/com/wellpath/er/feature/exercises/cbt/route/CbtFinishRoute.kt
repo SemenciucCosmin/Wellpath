@@ -13,6 +13,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
+import com.wellpath.er.domain.extensions.getContext
+import com.wellpath.er.domain.extensions.showToast
+import com.wellpath.er.domain.model.ToastLength
 import com.wellpath.er.feature.exercises.cbt.model.CbtStage
 import com.wellpath.er.feature.exercises.cbt.viewmodel.CbtViewModel
 import com.wellpath.er.ui.components.PrimaryButton
@@ -22,11 +25,14 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import wellpath.composeapp.generated.resources.Res
 import wellpath.composeapp.generated.resources.lbl_cbt_finish_title
+import wellpath.composeapp.generated.resources.lbl_exercise_saved_successfully
 import wellpath.composeapp.generated.resources.lbl_finish
 
 @Composable
 fun CbtFinishRoute(navController: NavController) {
     val viewModel: CbtViewModel = koinViewModel()
+    val context = getContext()
+    val toastMessage = stringResource(Res.string.lbl_exercise_saved_successfully)
 
     Scaffold { paddingValues ->
         Column(
@@ -53,6 +59,11 @@ fun CbtFinishRoute(navController: NavController) {
                     navController.popBackStack(
                         route = ExercisesNavDestination.CBT(CbtStage.SITUATION.id),
                         inclusive = true
+                    )
+                    showToast(
+                        context = context,
+                        message = toastMessage,
+                        length = ToastLength.SHORT
                     )
                 }
             )
